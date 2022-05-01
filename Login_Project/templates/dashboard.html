@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <div class ="card-wrapper">
+
+        <div class = "card">
+            <h1 class = "center">Dashboard</h1>
+            <p class ="center">You are logged in. </p>
+
+            <div class = "center">
+                <a href="/user/signout" class="btn btn--secondary">Sign out</a>
+            </div>
+        </div>
+        <div class = "card">
+            <h2 class="center">Your info</h2>
+            <p>
+                <strong>ID:</strong> {{ session['user']['_id'] }} <br>
+                <strong>Name:</strong> {{ session['user']['name'] }} <br>
+                <strong>Email:</strong> {{ session['user']['email'] }} <br>
+            </p>
+        </div>
+    </div>
+    <!--
+        <h1>Dashboard</h1>
+    {{session['logged_in'] }} 
+    {{session['user'] }} 
+    -->
+    <!-- session['user'] returns user settings from start_session since session['user'] = user, which is the class, this occurs in models.py, however, password is deleted from start_session before the session object is assigned to the user class object, therefore the user password data isn't stored ever inside of session['user'] -->
+
+{% endblock %}
